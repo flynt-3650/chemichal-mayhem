@@ -5,59 +5,6 @@
 package com.rgbteam.chemistry;
 
 public class PeriodicTable {
-    public static class Element {
-        private final String fullName;
-        private final String shortName;
-        private final int atomicNumber;
-        private final boolean isMetal;
-        private final double atomicMass;
-        private final double molarMass;
-
-        public Element(String shortName, String fullName, int number, boolean metal, double atomicMass) {
-            this.shortName = shortName;
-            this.fullName = fullName;
-            this.atomicNumber = number;
-            this.isMetal = metal;
-            this.atomicMass = atomicMass;
-            this.molarMass = atomicMass / 10;
-        }
-
-        public String getShortName() {
-            return shortName;
-        }
-
-        public String getFullName() {
-            return fullName;
-        }
-
-        public int getNumber() {
-            return atomicNumber;
-        }
-
-        public boolean isMetal() {
-            return isMetal;
-        }
-
-        public double getAtomicMass() {
-            return atomicMass;
-        }
-
-        public double getMolarMass() {
-            return molarMass;
-        }
-
-        @Override
-        public String toString() {
-            return "Element{ " +
-                    "fullName='" + fullName + '\'' +
-                    ", shortName='" + shortName + '\'' +
-                    ", number=" + atomicNumber +
-                    ", isMetal=" + isMetal +
-                    ", atomicMass=" + atomicMass + "g/mol" +
-                    ", molarMass=" + molarMass + "kg/mol" +
-                    " }";
-        }
-    }
     private static final Element[] TABLE_LIST = {
             new Element("H", "Hydrogen", 1, false, 1.008),
             new Element("He", "Helium", 2, false, 4.0026),

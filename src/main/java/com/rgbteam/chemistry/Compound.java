@@ -16,6 +16,7 @@ public class Compound {
 
         int tokenCount = tokenizer.countTokens();
         this.parsedCompound = new String[tokenCount];
+
         for (int i = 0; i < tokenCount; i++) {
             this.parsedCompound[i] = tokenizer.nextToken();
         }
@@ -30,7 +31,7 @@ public class Compound {
             // Check if the token is an element
             if (isElement(token)) {
                 // Retrieve the atomic mass of the element from the PeriodicTable
-                PeriodicTable.Element element = PeriodicTable.getElementByShortName(token);
+                Element element = PeriodicTable.getElementByShortName(token);
                 if (element != null) {
                     stack.push(element.getAtomicMass());
                 }
@@ -77,7 +78,7 @@ public class Compound {
         }
 
         // Format the total mass as a string with three decimal places
-        return String.valueOf(totalMass);
+        return String.format("%.4f", totalMass);
     }
 
     private static boolean isElement(String token) {

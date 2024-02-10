@@ -8,6 +8,7 @@ package com.rgbteam;
 import java.util.Scanner;
 import com.rgbteam.chemistry.Compound;
 import com.rgbteam.chemistry.PeriodicTable;
+import com.rgbteam.chemistry.Element;
 
 class Main {
     public static void main(String[] args) {
@@ -32,12 +33,12 @@ class Main {
                 case "0":
                     System.out.println("Exiting...");
                     break label;
-                case "1":
+                case "1": {
                     System.out.print("Enter element's number: ");
                     String inputNumber = scanner.nextLine();
                     try {
                         int elementNumber = Integer.parseInt(inputNumber);
-                        PeriodicTable.Element element = PeriodicTable.getElementByNumber(elementNumber);
+                        Element element = PeriodicTable.getElementByNumber(elementNumber);
                         if (element != null)
                             System.out.println(element);
                         else
@@ -47,10 +48,11 @@ class Main {
                         System.err.println("Invalid input.");
                     }
                     break;
+                }
                 case "2": {
                     System.out.print("Enter short designation: ");
                     String inputDesignation = scanner.nextLine();
-                    PeriodicTable.Element element = PeriodicTable.getElementByShortName(inputDesignation);
+                    Element element = PeriodicTable.getElementByShortName(inputDesignation);
                     if (element != null)
                         System.out.println(element);
                     else
@@ -60,7 +62,7 @@ class Main {
                 case "3": {
                     System.out.print("Enter full name: ");
                     String inputFullName = scanner.nextLine();
-                    PeriodicTable.Element element = PeriodicTable.getElementByFullName(inputFullName);
+                    Element element = PeriodicTable.getElementByFullName(inputFullName);
                     if (element != null)
                         System.out.println(element);
                     else
