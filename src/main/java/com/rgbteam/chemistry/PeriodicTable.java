@@ -5,7 +5,7 @@
 package com.rgbteam.chemistry;
 
 public class PeriodicTable {
-    private static final Element[] TABLE_LIST = {
+    private static final Element[] TABLE = {
             new Element("H", "Hydrogen", 1, false, 1.008),
             new Element("He", "Helium", 2, false, 4.0026),
             new Element("Li", "Lithium", 3, true, 6.94),
@@ -127,7 +127,7 @@ public class PeriodicTable {
     };
 
     public static Element getElementByShortName(String queryShortName) {
-        for (Element item : TABLE_LIST)
+        for (Element item : TABLE)
             if (item.getShortName().equalsIgnoreCase(queryShortName))
                 return item;
 
@@ -135,7 +135,7 @@ public class PeriodicTable {
     }
 
     public static Element getElementByFullName(String queryFullName) {
-        for (Element item : TABLE_LIST)
+        for (Element item : TABLE)
             if (item.getFullName().equalsIgnoreCase(queryFullName))
                 return item;
 
@@ -143,8 +143,8 @@ public class PeriodicTable {
     }
 
     public static Element getElementByNumber(int queryNumber) {
-        if (queryNumber >= 1 && queryNumber <= TABLE_LIST.length)
-            return TABLE_LIST[queryNumber - 1];
+        if (queryNumber >= 1 && queryNumber <= TABLE.length)
+            return TABLE[queryNumber - 1];
 
         return null;
     }
