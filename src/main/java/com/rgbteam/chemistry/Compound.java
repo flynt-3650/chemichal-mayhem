@@ -22,7 +22,7 @@ public class Compound {
         }
     }
 
-    public String calculateAtomicMass() {
+    public double calculateAtomicMass() {
         // Create a stack to keep track of atomic masses and counts
         Stack<Double> stack = new Stack<>();
 
@@ -78,7 +78,7 @@ public class Compound {
         }
 
         // Format the total mass as a string with three decimal places
-        return String.format("%.4f", totalMass);
+        return totalMass;
     }
 
     private static boolean isElement(String token) {
