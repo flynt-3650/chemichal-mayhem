@@ -12,8 +12,8 @@ public class Element {
     private final int electronAmount;
 
     public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass) {
-        this.shortName = shortName;
         this.fullName = fullName;
+        this.shortName = shortName;
         this.atomicNumber = number;
         this.protonAmount = number;
         this.electronAmount = number;

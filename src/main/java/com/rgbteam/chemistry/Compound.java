@@ -54,14 +54,14 @@ public class Compound {
                 }
                 int count = 1;
                 // Check if there's a numeric coefficient preceding the closing parenthesis
-                if (!stack.isEmpty() && isNumeric(String.valueOf(stack.peek()))) {
+                if (!stack.isEmpty() && isInteger(String.valueOf(stack.peek()))) {
                     count = stack.pop().intValue();
                 }
                 // Push the result of (sum * count) onto the stack
                 stack.push(sum * count);
             }
             // Check if the token is a numeric coefficient
-            else if (isNumeric(token)) {
+            else if (isInteger(token)) {
                 int count = Integer.parseInt(token);
                 // Multiply the top element on the stack (atomic mass) by the coefficient
                 if (!stack.isEmpty() && stack.peek() != 0.0) {
@@ -85,7 +85,7 @@ public class Compound {
         return PeriodicTable.getElementByShortName(token) != null;
     }
 
-    private static boolean isNumeric(String token) {
+    private static boolean isInteger(String token) {
         try {
             Integer.parseInt(token);
             return true;
