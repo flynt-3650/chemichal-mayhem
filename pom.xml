@@ -56,7 +56,7 @@
                 <addClasspath>true</addClasspath>
                 <classpathPrefix>libs/</classpathPrefix>
                 <mainClass>
-                  com.rgbteam.Main
+                  com.rgbteam.View
                 </mainClass>
               </manifest>
             </archive>
