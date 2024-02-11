@@ -11,15 +11,15 @@ public class Element {
     private final int neutronAmount;
     private final int electronAmount;
 
-    public Element(String shortName, String fullName, int number, boolean metal, double atomicMass) {
+    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass) {
         this.shortName = shortName;
         this.fullName = fullName;
         this.atomicNumber = number;
-        this.isMetal = metal;
-        this.atomicMass = atomicMass;
-        this.molarMass = atomicMass / 10;
         this.protonAmount = number;
         this.electronAmount = number;
+        this.isMetal = isMetal;
+        this.atomicMass = atomicMass;
+        this.molarMass = atomicMass / 10;
         this.neutronAmount = (int) atomicMass - number;
     }
 
@@ -65,17 +65,14 @@ public class Element {
 
     @Override
     public String toString() {
-        return "Element{" +
-                "fullName='" + fullName + '\'' +
-                ", shortName='" + shortName + '\'' +
-                ", atomicNumber=" + atomicNumber +
-                ", isMetal=" + isMetal +
-                ", atomicMass=" + atomicMass +
-                ", molarMass=" + molarMass +
-                ", protonAmount=" + protonAmount +
-                ", neutronAmount=" + neutronAmount +
-                ", electronAmount=" + electronAmount +
-                '}';
+        return "Element is " + fullName + " (" + shortName + ")\n" +
+                "Atomic Number: " + atomicNumber + "\n" +
+                "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
+                "Atomic Mass: " + atomicMass + " amu\n" +
+                "Molar Mass: " + molarMass + " g/mol\n" +
+                "Protons: " + protonAmount + "\n" +
+                "Neutrons: " + neutronAmount + "\n" +
+                "Electrons: " + electronAmount;
     }
 
     @Override
@@ -128,9 +125,6 @@ public class Element {
             return false;
         if (neutronAmount != other.neutronAmount)
             return false;
-        if (electronAmount != other.electronAmount)
-            return false;
-
-        return true;
+        return electronAmount == other.electronAmount;
     }
 }
