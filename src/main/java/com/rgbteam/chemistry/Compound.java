@@ -98,4 +98,24 @@ public class Compound {
     public String toString() {
         return Arrays.toString(parsedCompound);
     }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Arrays.hashCode(parsedCompound);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Compound other = (Compound) obj;
+        return Arrays.equals(parsedCompound, other.parsedCompound);
+    }
 }
