@@ -98,19 +98,17 @@ public class Element {
     public boolean equals(Object obj) { // it does the job, believe me
         if (this == obj)
             return true;
-        if (obj == null)
+        if (obj == null || getClass() != obj.getClass())
             return false;
-        if (getClass() != obj.getClass())
-            return false;
+
         Element other = (Element) obj;
-        if (fullName == null) {
-            if (other.fullName != null)
-                return false;
+
+        if (fullName == null && other.fullName != null) {
+            return false;
         } else if (!fullName.equals(other.fullName))
             return false;
-        if (shortName == null) {
-            if (other.shortName != null)
-                return false;
+        if (shortName == null && other.shortName != null) {
+            return false;
         } else if (!shortName.equals(other.shortName))
             return false;
         if (atomicNumber != other.atomicNumber)
