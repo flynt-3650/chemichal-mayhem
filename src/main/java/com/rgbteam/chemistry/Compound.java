@@ -1,7 +1,8 @@
 /*
- * Copyright (c) 2023. fl_3650
+ * Copyright (c) 2024. RGBTeam
  */
 
+ 
 package com.rgbteam.chemistry;
 
 import java.util.Arrays;
@@ -22,7 +23,7 @@ public class Compound {
         }
     }
 
-    public String calculateAtomicMass() {
+    public double calculateAtomicMass() {
         // Create a stack to keep track of atomic masses and counts
         Stack<Double> stack = new Stack<>();
 
@@ -54,14 +55,14 @@ public class Compound {
                 }
                 int count = 1;
                 // Check if there's a numeric coefficient preceding the closing parenthesis
-                if (!stack.isEmpty() && isNumeric(String.valueOf(stack.peek()))) {
+                if (!stack.isEmpty() && isInteger(String.valueOf(stack.peek()))) {
                     count = stack.pop().intValue();
                 }
                 // Push the result of (sum * count) onto the stack
                 stack.push(sum * count);
             }
             // Check if the token is a numeric coefficient
-            else if (isNumeric(token)) {
+            else if (isInteger(token)) {
                 int count = Integer.parseInt(token);
                 // Multiply the top element on the stack (atomic mass) by the coefficient
                 if (!stack.isEmpty() && stack.peek() != 0.0) {
@@ -78,14 +79,14 @@ public class Compound {
         }
 
         // Format the total mass as a string with three decimal places
-        return String.format("%.4f", totalMass);
+        return totalMass;
     }
 
     private static boolean isElement(String token) {
         return PeriodicTable.getElementByShortName(token) != null;
     }
 
-    private static boolean isNumeric(String token) {
+    private static boolean isInteger(String token) {
         try {
             Integer.parseInt(token);
             return true;
@@ -97,5 +98,25 @@ public class Compound {
     @Override
     public String toString() {
         return Arrays.toString(parsedCompound);
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + Arrays.hashCode(parsedCompound);
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Compound other = (Compound) obj;
+        return Arrays.equals(parsedCompound, other.parsedCompound);
     }
 }
