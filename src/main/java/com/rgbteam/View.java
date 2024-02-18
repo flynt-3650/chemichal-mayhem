@@ -11,6 +11,7 @@ import com.rgbteam.chemistry.PeriodicTable;
 import com.rgbteam.chemistry.Element;
 
 class View {
+    Controller controller = new Controller();
     public View() {
         Scanner scanner = new Scanner(System.in);
 
@@ -38,7 +39,7 @@ class View {
                     String inputNumber = scanner.nextLine();
                     try {
                         int elementNumber = Integer.parseInt(inputNumber);
-                        Element element = PeriodicTable.getElementByNumber(elementNumber);
+                        Element element = controller.retrieveElementByNumber(elementNumber);
                         if (element != null)
                             System.out.println(element);
                         else
@@ -52,7 +53,7 @@ class View {
                 case "2": {
                     System.out.print("Enter short designation: ");
                     String inputDesignation = scanner.nextLine();
-                    Element element = PeriodicTable.getElementByShortName(inputDesignation);
+                    Element element = controller.retrieveElementByShortName(inputDesignation);
                     if (element != null)
                         System.out.println(element);
                     else
@@ -62,7 +63,7 @@ class View {
                 case "3": {
                     System.out.print("Enter full name: ");
                     String inputFullName = scanner.nextLine();
-                    Element element = PeriodicTable.getElementByFullName(inputFullName);
+                    Element element = controller.retrieveElementByFullName(inputFullName);
                     if (element != null)
                         System.out.println(element);
                     else
@@ -72,10 +73,10 @@ class View {
                 }
                 case "4":
                     System.out.print("Enter compound (Separate elements, numbers and parenthesis using '-' or '_' or ' '): ");
-                    Compound compound = new Compound(scanner.nextLine());
+                    String unparsed = scanner.nextLine();
                     try {
-                        double mass = compound.calculateAtomicMass();
-                        System.out.println("The mass of the " + compound + " is: " + String.format("%.4f",mass));
+                        double mass = controller.calculateCompoundsAtomicMass(unparsed);
+                        System.out.println("The mass of the [" + unparsed + "] is: " + String.format("%.4f",mass));
                     } catch (Exception e) {
                         System.err.println("Invalid input or element not found: " + e.getCause());
                     }
