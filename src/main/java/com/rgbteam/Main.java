@@ -2,7 +2,7 @@
  * Copyright (c) 2024. RGBTeam
  */
 
-
+//test
 package com.rgbteam;
 
 public class Main {
