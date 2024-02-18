@@ -75,7 +75,7 @@ public class Element {
     public int[] getValencies() { return valencies; }
 
     public String toString() {
-        StringBuilder valencesStr = new StringBuilder("[");
+        StringBuilder valencesStr = new StringBuilder(": [");
         for (int i = 0; i < valencies.length; i++) {
             if (i > 0) {
                 valencesStr.append(", ");
@@ -84,7 +84,6 @@ public class Element {
         }
         valencesStr.append("]");
 
-        // Возврат итоговой строки с данными элемента
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
                 "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
@@ -93,7 +92,7 @@ public class Element {
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
                 "Electrons: " + electronAmount + "\n" +
-                "Valence: " + valencesStr.toString(); // Использование преобразованной строки valencesStr
+                "Valence: " + valencesStr.toString();
     }
 
     @Override
