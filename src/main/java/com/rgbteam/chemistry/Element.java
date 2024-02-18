@@ -5,6 +5,8 @@
 
 package com.rgbteam.chemistry;
 
+import java.util.Arrays;
+
 public class Element {
     private final String fullName;
     private final String shortName;
@@ -15,8 +17,9 @@ public class Element {
     private final int protonAmount;
     private final int neutronAmount;
     private final int electronAmount;
+    private final int[] valence;
 
-    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass) {
+    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass, int[] valence) {
         this.fullName = fullName;
         this.shortName = shortName;
         this.atomicNumber = number;
@@ -26,6 +29,7 @@ public class Element {
         this.atomicMass = atomicMass;
         this.molarMass = atomicMass / 10;
         this.neutronAmount = (int) atomicMass - number;
+        this.valence = valence;
     }
 
     public String getShortName() {
@@ -67,6 +71,7 @@ public class Element {
     public int getElectronAmount() {
         return electronAmount;
     }
+    public int[] getValence() { return valence; }
 
     @Override
     public String toString() {
@@ -77,7 +82,8 @@ public class Element {
                 "Molar Mass: " + molarMass + " g/mol\n" +
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
-                "Electrons: " + electronAmount;
+                "Electrons: " + electronAmount +
+                "Valence: " + valence;
     }
 
     @Override
@@ -96,6 +102,7 @@ public class Element {
         result = prime * result + protonAmount;
         result = prime * result + neutronAmount;
         result = prime * result + electronAmount;
+        result = prime * result + Arrays.stream(valence).sum();
         return result;
     }
 
