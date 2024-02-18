@@ -6,6 +6,7 @@
 package com.rgbteam.chemistry;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 public class Element {
     private final String fullName;
@@ -17,7 +18,7 @@ public class Element {
     private final int protonAmount;
     private final int neutronAmount;
     private final int electronAmount;
-    private final int[] valence;
+    private final int[] valencies;
 
     public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass, int[] valence) {
         this.fullName = fullName;
@@ -29,7 +30,7 @@ public class Element {
         this.atomicMass = atomicMass;
         this.molarMass = atomicMass / 10;
         this.neutronAmount = (int) atomicMass - number;
-        this.valence = valence;
+        this.valencies = valence;
     }
 
     public String getShortName() {
@@ -71,10 +72,20 @@ public class Element {
     public int getElectronAmount() {
         return electronAmount;
     }
-    public int[] getValence() { return valence; }
+    public int[] getValencies() { return valencies; }
 
-    @Override
     public String toString() {
+        // Преобразование массива valence в строку с помощью StringBuilder
+        StringBuilder valencesStr = new StringBuilder("[");
+        for (int i = 0; i < valencies.length; i++) {
+            if (i > 0) {
+                valencesStr.append(", ");
+            }
+            valencesStr.append(valencies[i]);
+        }
+        valencesStr.append("]");
+
+        // Возврат итоговой строки с данными элемента
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
                 "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
@@ -82,8 +93,8 @@ public class Element {
                 "Molar Mass: " + molarMass + " g/mol\n" +
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
-                "Electrons: " + electronAmount +
-                "Valence: " + valence;
+                "Electrons: " + electronAmount + "\n" +
+                "Valence: " + valencesStr.toString(); // Использование преобразованной строки valencesStr
     }
 
     @Override
@@ -102,39 +113,24 @@ public class Element {
         result = prime * result + protonAmount;
         result = prime * result + neutronAmount;
         result = prime * result + electronAmount;
-        result = prime * result + Arrays.stream(valence).sum();
+        result = prime * result + Arrays.stream(valencies).sum();
         return result;
     }
 
     @Override
-    public boolean equals(Object obj) { // it does the job, believe me
-        if (this == obj)
-            return true;
-        if (obj == null || getClass() != obj.getClass())
-            return false;
-
-        Element other = (Element) obj;
-
-        if (fullName == null && other.fullName != null) {
-            return false;
-        } else if (!fullName.equals(other.fullName))
-            return false;
-        if (shortName == null && other.shortName != null) {
-            return false;
-        } else if (!shortName.equals(other.shortName))
-            return false;
-        if (atomicNumber != other.atomicNumber)
-            return false;
-        if (isMetal != other.isMetal)
-            return false;
-        if (Double.doubleToLongBits(atomicMass) != Double.doubleToLongBits(other.atomicMass))
-            return false;
-        if (Double.doubleToLongBits(molarMass) != Double.doubleToLongBits(other.molarMass))
-            return false;
-        if (protonAmount != other.protonAmount)
-            return false;
-        if (neutronAmount != other.neutronAmount)
-            return false;
-        return electronAmount == other.electronAmount;
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Element element = (Element) o;
+        return atomicNumber == element.atomicNumber &&
+                isMetal == element.isMetal &&
+                Double.compare(atomicMass, element.atomicMass) == 0 &&
+                Double.compare(molarMass, element.molarMass) == 0 &&
+                protonAmount == element.protonAmount &&
+                neutronAmount == element.neutronAmount &&
+                electronAmount == element.electronAmount &&
+                Objects.equals(fullName, element.fullName) &&
+                Objects.equals(shortName, element.shortName) &&
+                Arrays.equals(valencies, element.valencies);
     }
 }
