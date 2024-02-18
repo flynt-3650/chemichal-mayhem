@@ -74,16 +74,8 @@ public class Element {
     }
     public int[] getValencies() { return valencies; }
 
+    @Override
     public String toString() {
-        StringBuilder valencesStr = new StringBuilder("[");
-        for (int i = 0; i < valencies.length; i++) {
-            if (i > 0) {
-                valencesStr.append(", ");
-            }
-            valencesStr.append(valencies[i]);
-        }
-        valencesStr.append("]");
-
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
                 "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
@@ -92,7 +84,7 @@ public class Element {
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
                 "Electrons: " + electronAmount + "\n" +
-                "Valence: " + valencesStr.toString();
+                "Valence: " + Arrays.toString(valencies);
     }
 
     @Override
