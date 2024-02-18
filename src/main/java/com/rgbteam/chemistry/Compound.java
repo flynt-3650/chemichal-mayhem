@@ -1,7 +1,8 @@
 /*
- * Copyright (c) 2023. fl_3650
+ * Copyright (c) 2024. RGBTeam
  */
 
+ 
 package com.rgbteam.chemistry;
 
 import java.util.Arrays;

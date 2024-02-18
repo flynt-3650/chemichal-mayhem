@@ -1,3 +1,8 @@
+/*
+ * Copyright (c) 2024. RGBTeam
+ */
+
+
 package com.rgbteam;
 
 public class Main {

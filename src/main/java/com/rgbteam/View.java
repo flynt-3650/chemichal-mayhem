@@ -1,26 +1,23 @@
 /*
- * Copyright (c) 2023. fl_3650
+ * Copyright (c) 2024. RGBTeam
  */
 
-
+ 
 package com.rgbteam;
 
 import java.util.Scanner;
-import com.rgbteam.chemistry.Compound;
-import com.rgbteam.chemistry.PeriodicTable;
 import com.rgbteam.chemistry.Element;
 
 class View {
-    Controller controller = new Controller();
     public View() {
+        Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Hello User! I am the prototype of the top-secret V.I.K. program!");
 
-        label:
-        while (true) {
+        label: while (true) {
             System.out.println("""
-                    
+
                     Enter:
                     1 -- get element info by its number (87, 43, etc.)
                     2 -- get element info by its short name ('H', 'As', etc.)
@@ -72,11 +69,12 @@ class View {
                     break;
                 }
                 case "4":
-                    System.out.print("Enter compound (Separate elements, numbers and parenthesis using '-' or '_' or ' '): ");
+                    System.out.print(
+                            "Enter compound (Separate elements, numbers and parenthesis using '-' or '_' or ' '): ");
                     String unparsed = scanner.nextLine();
                     try {
                         double mass = controller.calculateCompoundsAtomicMass(unparsed);
-                        System.out.println("The mass of the [" + unparsed + "] is: " + String.format("%.4f",mass));
+                        System.out.println("The mass of the [" + unparsed + "] is: " + String.format("%.4f", mass));
                     } catch (Exception e) {
                         System.err.println("Invalid input or element not found: " + e.getCause());
                     }
