@@ -75,7 +75,6 @@ public class Element {
     public int[] getValencies() { return valencies; }
 
     public String toString() {
-        // Преобразование массива valence в строку с помощью StringBuilder
         StringBuilder valencesStr = new StringBuilder("[");
         for (int i = 0; i < valencies.length; i++) {
             if (i > 0) {
