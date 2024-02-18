@@ -7,9 +7,9 @@ package com.rgbteam.chemistry;
 
 public class PeriodicTable {
     private static final Element[] TABLE = {
-            new Element("H", "Hydrogen", 1, false, 1.008, new int[]{1}),
+            new Element("H", "Hydrogen", 1, false, 1.008, new int[]{-1,0, 1}),
             new Element("He", "Helium", 2, false, 4.0026, new int[]{0}),
-            new Element("Li", "Lithium", 3, true, 6.94, new int[]{1}),
+            new Element("Li", "Lithium", 3, true, 6.94, new int[]{0, 1}),
             new Element("Be", "Beryllium", 4, true, 9.0122, new int[]{2}),
             new Element("B", "Boron", 5, true, 10.81, new int[]{3}),
             new Element("C", "Carbon", 6, false, 12.011, new int[]{2, 4}),

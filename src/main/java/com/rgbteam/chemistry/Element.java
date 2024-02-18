@@ -18,9 +18,10 @@ public class Element {
     private final int protonAmount;
     private final int neutronAmount;
     private final int electronAmount;
+    private final int[] oxidationState;
     private final int[] valencies;
 
-    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass, int[] valence) {
+    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass, int[] oxidationState) {
         this.fullName = fullName;
         this.shortName = shortName;
         this.atomicNumber = number;
@@ -30,7 +31,12 @@ public class Element {
         this.atomicMass = atomicMass;
         this.molarMass = atomicMass / 10;
         this.neutronAmount = (int) atomicMass - number;
-        this.valencies = valence;
+        this.oxidationState = oxidationState;
+
+        valencies = new int[oxidationState.length];
+        for (int i = 0; i < oxidationState.length; i++) {
+            valencies[i] = Math.abs(oxidationState[i]);
+        }
     }
 
     public String getShortName() {
@@ -74,6 +80,10 @@ public class Element {
     }
     public int[] getValencies() { return valencies; }
 
+    public int[] getOxidationState() {
+        return oxidationState;
+    }
+
     @Override
     public String toString() {
         return "Element is " + fullName + " (" + shortName + ")\n" +
@@ -84,43 +94,47 @@ public class Element {
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
                 "Electrons: " + electronAmount + "\n" +
-                "Valence: " + Arrays.toString(valencies);
-    }
-
-    @Override
-    public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
-        result = prime * result + ((shortName == null) ? 0 : shortName.hashCode());
-        result = prime * result + atomicNumber;
-        result = prime * result + (isMetal ? 1231 : 1237);
-        long temp;
-        temp = Double.doubleToLongBits(atomicMass);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        temp = Double.doubleToLongBits(molarMass);
-        result = prime * result + (int) (temp ^ (temp >>> 32));
-        result = prime * result + protonAmount;
-        result = prime * result + neutronAmount;
-        result = prime * result + electronAmount;
-        result = prime * result + Arrays.stream(valencies).sum();
-        return result;
+                "Valence: " + Arrays.toString(oxidationState) + "\n" +
+                "Oxidation State: " + Arrays.toString(valencies);
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Element element = (Element) o;
-        return atomicNumber == element.atomicNumber &&
-                isMetal == element.isMetal &&
-                Double.compare(atomicMass, element.atomicMass) == 0 &&
-                Double.compare(molarMass, element.molarMass) == 0 &&
-                protonAmount == element.protonAmount &&
-                neutronAmount == element.neutronAmount &&
-                electronAmount == element.electronAmount &&
-                Objects.equals(fullName, element.fullName) &&
-                Objects.equals(shortName, element.shortName) &&
-                Arrays.equals(valencies, element.valencies);
+
+        if (atomicNumber != element.atomicNumber) return false;
+        if (isMetal != element.isMetal) return false;
+        if (Double.compare(atomicMass, element.atomicMass) != 0) return false;
+        if (Double.compare(molarMass, element.molarMass) != 0) return false;
+        if (protonAmount != element.protonAmount) return false;
+        if (neutronAmount != element.neutronAmount) return false;
+        if (electronAmount != element.electronAmount) return false;
+        if (!Objects.equals(fullName, element.fullName)) return false;
+        if (!Objects.equals(shortName, element.shortName)) return false;
+        if (!Arrays.equals(oxidationState, element.oxidationState)) return false;
+        return Arrays.equals(valencies, element.valencies);
+    }
+
+    @Override
+    public int hashCode() {
+        int result;
+        long temp;
+        result = fullName != null ? fullName.hashCode() : 0;
+        result = 31 * result + (shortName != null ? shortName.hashCode() : 0);
+        result = 31 * result + atomicNumber;
+        result = 31 * result + (isMetal ? 1 : 0);
+        temp = Double.doubleToLongBits(atomicMass);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(molarMass);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        result = 31 * result + protonAmount;
+        result = 31 * result + neutronAmount;
+        result = 31 * result + electronAmount;
+        result = 31 * result + Arrays.hashCode(oxidationState);
+        result = 31 * result + Arrays.hashCode(valencies);
+        return result;
     }
 }
