@@ -4,7 +4,9 @@
 
 package com.rgbteam.chemistry;
 
-public class PeriodicTable {
+import javax.swing.*;
+
+public class PeriodicTable extends JFrame {
     public static class Element {
         private final String fullName;
         private final String shortName;
@@ -178,6 +180,8 @@ public class PeriodicTable {
             new Element("Ts", "Tennessine", 117, false, 294.211),
             new Element("Og", "Oganesson", 118, false, 295.216)
     };
+
+    public Element[] getTableList() { return TABLE_LIST; }
 
     public static Element getElementByShortName(String queryShortName) {
         for (Element item : TABLE_LIST)

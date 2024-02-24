@@ -1,40 +1,40 @@
-package com.rgbteam;
+package com.rgbteam.UI;
 
 import javax.swing.*;
-import com.rgbteam.chemistry.Compound;
-import com.rgbteam.chemistry.PeriodicTable;
-
+import com.rgbteam.chemistry.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
-class UserView extends JFrame {
+class UserView extends PeriodicTable {
 
-    private JTextField elementInfo = new JTextField();
-    JPanel buttons = new JPanel(new GridLayout(18, 18, 5, 5));
+    private final JTextField elementInfo = new JTextField();
+    private final JPanel buttonsPanel = new JPanel(new GridLayout(10, 18, 8, 8));
 
     UserView(){
-        super("chemistry table");
+        init();
+        addButtons();
     }
 
-    
     public void init(){
-        setSize(500,500);
+        buttonsPanel.setBackground(Color.black);
+        getContentPane().add(elementInfo, BorderLayout.EAST);
+        setSize(1000, 1000);
         setVisible(true);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
     }
 
-    public void addButtons(PeriodicTable.Element[] TABLE_LIST){
+    public void addButtons(){
+
+        PeriodicTable.Element[] TABLE_LIST = getTableList();
 
         for (PeriodicTable.Element el : TABLE_LIST){
             JButton elementButton = new JButton(el.getShortName());
             if(el.isMetal()){
                 elementButton.setBackground(Color.yellow);
-            }else{
+            } else {
                 elementButton.setBackground(Color.green);
             }
-            elementButton.setPreferredSize(new Dimension(40, 40));
+            elementButton.setSize(10, 10);
             elementButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent ae) {
                     /*
@@ -42,15 +42,17 @@ class UserView extends JFrame {
                     сделать обновление информации об элементе (металл, не металл , атомная масса, валентность, полное название)
                     JButton clickedButton = (JButton) ae.getSource();
                     String buttonText = clickedButton.getText();
-
                     (идеи, что ещё можено реализовать)
                     url вики
-
                      */
-
                 }
             });
-            buttons.add(elementButton);
+            buttonsPanel.add(elementButton);
         }
+        getContentPane().add(buttonsPanel, BorderLayout.CENTER);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(UserView::new);
     }
 }
