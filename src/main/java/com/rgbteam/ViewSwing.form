@@ -43,11 +43,6 @@
           <text value="Button"/>
         </properties>
       </component>
-      <hspacer id="9f65f">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="10" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="47d30" class="javax.swing.JButton" binding="button5" default-binding="true">
         <constraints>
           <grid row="1" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -56,11 +51,6 @@
           <text value="Button"/>
         </properties>
       </component>
-      <hspacer id="f29d1">
-        <constraints>
-          <grid row="0" column="1" row-span="1" col-span="16" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="30b7d" class="javax.swing.JButton" binding="button6" default-binding="true">
         <constraints>
           <grid row="1" column="13" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -261,11 +251,6 @@
           <text value="Button"/>
         </properties>
       </component>
-      <hspacer id="c8a2c">
-        <constraints>
-          <grid row="2" column="2" row-span="1" col-span="10" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
       <component id="af49f" class="javax.swing.JButton" binding="button31" default-binding="true">
         <constraints>
           <grid row="3" column="12" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
@@ -1019,11 +1004,6 @@
           <text value="Label"/>
         </properties>
       </component>
-      <vspacer id="b42c4">
-        <constraints>
-          <grid row="7" column="0" row-span="2" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
     </children>
   </grid>
 </form>
