@@ -1,4 +1,4 @@
-package com.rgbteam;
+package com.rgbteam.view;
 
 import javax.swing.*;
 
