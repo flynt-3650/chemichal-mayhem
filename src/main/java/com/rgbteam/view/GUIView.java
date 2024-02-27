@@ -3,7 +3,7 @@ package com.rgbteam.view;
 import javax.swing.*;
 
 
-public class ViewSwing {
+public class GUIView {
     private JPanel panel1;
     private JButton button1;
     private JButton button2;
@@ -124,12 +124,12 @@ public class ViewSwing {
     private JButton button117;
     private JButton button118;
 
-    public ViewSwing() {
-        FrameSettings();
+    public GUIView() {
+        frameSettings();
         initializeButtons();
     }
 
-    public void FrameSettings() {
+    public void frameSettings() {
         JFrame frame = new JFrame("Periodic Table");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().add(this.panel1);

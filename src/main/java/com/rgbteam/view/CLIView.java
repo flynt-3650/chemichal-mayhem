@@ -3,13 +3,15 @@
  */
 
  
-package com.rgbteam;
+package com.rgbteam.view;
 
 import java.util.Scanner;
+
+import com.rgbteam.Controller;
 import com.rgbteam.chemistry.Element;
 
-class View {
-    public View() {
+public class CLIView {
+    public CLIView() {
         Controller controller = new Controller();
         Scanner scanner = new Scanner(System.in);
 

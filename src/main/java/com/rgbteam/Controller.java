@@ -16,7 +16,6 @@ public class Controller {
 
     public Element retrieveElementByShortName(String shortName) {
         return PeriodicTable.getElementByShortName(shortName);
-
     }
 
     public Element retrieveElementByFullName(String fullName) {
