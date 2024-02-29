@@ -7,9 +7,10 @@ package com.rgbteam;
 
 import com.rgbteam.view.CLIView;
 import com.rgbteam.view.GUIView;
+import com.rgbteam.view.NewTable;
 
 public class Main {
     public static void main(String[] args) {
-        new GUIView();
+        new NewTable();
     }
 }

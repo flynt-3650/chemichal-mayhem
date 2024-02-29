@@ -1,37 +1,72 @@
 package com.rgbteam.view;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JLabel;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JFrame;
+import javax.swing.Box;
+
+import java.awt.GridLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import com.rgbteam.Controller;
+import com.rgbteam.chemistry.Element;
 
 public class NewTable {
-
-    private JPanel panel;
     private JButton[] buttons;
     private JLabel label1;
     private JLabel label2;
     private JLabel label3;
     private JLabel label4;
+    private final Controller controller = new Controller();
 
     public NewTable() {
-        initialize();
-        frameSettings();
-
+        initializeElementButtonsAndTheirListeners();
+        initializeFrame();
     }
 
-    public void initialize() {
+    private void initializeElementButtonsAndTheirListeners() {
         label1 = new JLabel("57 - 71");
         label2 = new JLabel("89 - 103");
         label3 = new JLabel("Lanthanide");
         label4 = new JLabel("Actinide");
         buttons = new JButton[118];
+
+        var elementButtonListener = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                JButton source = (JButton) actionEvent.getSource();
+                String shortName = source.getText();
+                var e = controller.retrieveElementByShortName(shortName);
+                JOptionPane.showMessageDialog(null, e, "Element", JOptionPane.INFORMATION_MESSAGE);
+            }
+        };
+
         for (int i = 0; i < 118; i++) {
-            buttons[i] = new JButton("el" + (i + 1));
+            Element e = controller.retrieveElementByNumber(i + 1);
+            if (e != null) {
+                buttons[i] = new JButton(e.getShortName());
+                buttons[i].addActionListener(elementButtonListener);
+            }
         }
     }
 
-    public void frameSettings() {
+    private void initializeFrame() {
+        JPanel panel = tablePanelSetup();
+        JFrame frame = new JFrame("Periodic Table");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.getContentPane().add(panel);
+        frame.pack();
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+    }
+
+    private JPanel tablePanelSetup() {
         int i = 0;
-        panel = new JPanel();
+        JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(9, 18, 10, 10));
 
         for (int row = 0; row < 9; row++) {
@@ -60,14 +95,6 @@ public class NewTable {
                 }
             }
         }
-
-        JFrame frame = new JFrame("Periodic Table");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(panel);
-        frame.pack();
-        frame.setVisible(true);
+        return panel;
     }
-
-
 }
-
