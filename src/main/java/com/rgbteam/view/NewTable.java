@@ -1,19 +1,12 @@
 package com.rgbteam.view;
 
-import javax.swing.JLabel;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JFrame;
-import javax.swing.Box;
-
-import java.awt.GridLayout;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import com.rgbteam.Controller;
 import com.rgbteam.chemistry.Element;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class NewTable {
     private JButton[] buttons;
@@ -67,11 +60,11 @@ public class NewTable {
     private JPanel tablePanelSetup() {
         int i = 0;
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(9, 18, 10, 10));
+        panel.setLayout(new GridLayout(10, 18, 10, 10));
 
-        for (int row = 0; row < 9; row++) {
+        for (int row = 0; row < 10; row++) {
             for (int col = 0; col < 18; col++) {
-                if ((row == 0 && col < 17 && col > 0) || (row == 1 && col < 12 && col > 1) || (row == 2 && col < 12 && col > 1) || (row == 7 && col < 2) || (row == 8 && col < 2)) {
+                if ((row == 0 && col < 17 && col > 0) || (row == 1 && col < 12 && col > 1) || (row == 2 && col < 12 && col > 1) || (row == 7) || (row == 8 && col < 2) || (row == 9 && col < 2)) {
                     panel.add(Box.createRigidArea(new Dimension(10, 10)));
                 } else if ((row == 5 && col == 2)) {
                     panel.add(label1);
@@ -79,10 +72,10 @@ public class NewTable {
                 } else if ((row == 6 && col == 2)) {
                     panel.add(label2);
                     i += 15;
-                } else if (row == 7 && col == 2) {
+                } else if (row == 8 && col == 2) {
                     panel.add(label3);
                     i -= 62;
-                } else if (row == 8 && col == 2) {
+                } else if (row == 9 && col == 2) {
                     panel.add(label4);
                     i += 17;
                 } else {
