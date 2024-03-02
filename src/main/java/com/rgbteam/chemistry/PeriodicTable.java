@@ -90,7 +90,7 @@ public class PeriodicTable {
             new Element("Tl", "Thallium", 81, "Post-transition metals", 204.383),
             new Element("Pb", "Lead", 82, "Post-transition metals", 207.0),
             new Element("Bi", "Bismuth", 83, "Post-transition metals", 208.98040),
-            new Element("Po", "Polonium", 84, "Post-transition metals", 208.98243),
+            new Element("Po", "Polonium", 84, "Metalloids", 208.98243),
             new Element("At", "Astatine", 85, "Halogen", 209.98715),
             new Element("Rn", "Radon", 86, "Noble gases", 222.01758),
             new Element("Fr", "Francium", 87, "Alkali metals", 223.01973),

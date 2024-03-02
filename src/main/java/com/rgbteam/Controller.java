@@ -26,4 +26,8 @@ public class Controller {
         Compound compound = new Compound(rawCompound);
         return compound.calculateAtomicMass();
     }
+
+    public String retrieveElementGroup(int number) {
+        return PeriodicTable.getElementGroup(number);
+    }
 }
