@@ -4,8 +4,16 @@ package com.rgbteam.view;
 import com.rgbteam.Controller;
 import com.rgbteam.chemistry.Element;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Box;
+
+import java.awt.GridLayout;
+import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
