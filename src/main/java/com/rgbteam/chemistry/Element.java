@@ -73,8 +73,8 @@ public class Element {
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
                 "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
-                "Atomic Mass: " + atomicMass + " amu\n" +
-                "Molar Mass: " + molarMass + " g/mol\n" +
+                "Atomic Mass: " + String.format("%.5f", atomicMass) + " amu\n" +
+                "Molar Mass: " + String.format("%.5f", molarMass) + " g/mol\n" +
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
                 "Electrons: " + electronAmount;

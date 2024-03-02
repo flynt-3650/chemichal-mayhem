@@ -3,7 +3,7 @@ package com.rgbteam.view;
 import javax.swing.*;
 
 
-public class GUIView {
+public class ObsoleteGUIView {
     private JPanel panel1;
     private JButton button1;
     private JButton button2;
@@ -124,7 +124,7 @@ public class GUIView {
     private JButton button117;
     private JButton button118;
 
-    public GUIView() {
+    public ObsoleteGUIView() {
         frameSettings();
         initializeButtons();
     }

@@ -1,14 +1,23 @@
 package com.rgbteam.view;
 
+
 import com.rgbteam.Controller;
 import com.rgbteam.chemistry.Element;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Box;
+
+import java.awt.GridLayout;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NewTable {
+
+public class GUIView {
     private JButton[] buttons;
     private JLabel label1;
     private JLabel label2;
@@ -16,7 +25,7 @@ public class NewTable {
     private JLabel label4;
     private final Controller controller = new Controller();
 
-    public NewTable() {
+    public GUIView() {
         initializeElementButtonsAndTheirListeners();
         initializeFrame();
     }
