@@ -137,4 +137,5 @@ public class Element {
         result = 31 * result + Arrays.hashCode(valencies);
         return result;
     }
+
 }
