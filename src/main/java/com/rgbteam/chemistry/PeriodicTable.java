@@ -150,5 +150,11 @@ public class PeriodicTable {
         return null;
     }
 
-
+    public static String getElementGroup(int queryNumber) {
+        if (queryNumber >= 1 && queryNumber <= TABLE.length) {
+            Element e = TABLE[queryNumber - 1];
+            return e.getGroupElement();
+        }
+        return null;
+    }
 }
