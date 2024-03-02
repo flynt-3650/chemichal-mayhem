@@ -73,8 +73,8 @@ public class Element {
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
                 "Element group: " + groupElement + "\n" +
-                "Atomic Mass: " + String.format("%.5f", atomicMass) + " amu\n" +
-                "Molar Mass: " + String.format("%.5f", molarMass) + " g/mol\n" +
+                "Atomic Mass: " + String.format("%.4f", atomicMass) + " amu\n" +
+                "Molar Mass: " + String.format("%.4f", molarMass) + " g/mol\n" +
                 "Protons: " + protonAmount + "\n" +
                 "Neutrons: " + neutronAmount + "\n" +
                 "Electrons: " + electronAmount;

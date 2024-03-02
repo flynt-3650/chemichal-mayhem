@@ -52,7 +52,7 @@ public class GUIView {
             Element e = controller.retrieveElementByNumber(i + 1);
             if (e != null) {
                 buttons[i] = new JButton(e.getShortName());
-                setColour(buttons[i], i);
+                setColor(buttons[i], i);
                 buttons[i].addActionListener(elementButtonListener);
             }
         }
@@ -102,28 +102,19 @@ public class GUIView {
         return panel;
     }
 
-    private void setColour(JButton button, int i) {
+    private void setColor(JButton button, int i) {
         String group = controller.retrieveElementGroup(i + 1);
-        if (group.equals("Nonmetals")) {
-            button.setBackground(Color.GREEN);
-        } else if (group.equals("Noble gases")) {
-            button.setBackground(Color.CYAN);
-        } else if (group.equals("Alkali metals")) {
-            button.setBackground(Color.RED);
-        } else if (group.equals("Alkaline earth metals")) {
-            button.setBackground(Color.ORANGE);
-        } else if (group.equals("Metalloids")) {
-            button.setBackground(Color.GRAY);
-        } else if (group.equals("Halogen")) {
-            button.setBackground(Color.YELLOW);
-        } else if (group.equals("Post-transition metals")) {
-            button.setBackground(Color.BLUE);
-        } else if (group.equals("Transition metals")) {
-            button.setBackground(Color.WHITE);
-        } else if (group.equals("Lanthanoids")) {
-            button.setBackground(Color.MAGENTA);
-        } else if (group.equals("Actinoids")) {
-            button.setBackground(Color.PINK);
+        switch (group) {
+            case "Nonmetals" -> button.setBackground(Color.GREEN);
+            case "Noble gases" -> button.setBackground(Color.CYAN);
+            case "Alkali metals" -> button.setBackground(Color.RED);
+            case "Alkaline earth metals" -> button.setBackground(Color.ORANGE);
+            case "Metalloids" -> button.setBackground(Color.GRAY);
+            case "Halogen" -> button.setBackground(Color.YELLOW);
+            case "Post-transition metals" -> button.setBackground(Color.BLUE);
+            case "Transition metals" -> button.setBackground(Color.WHITE);
+            case "Lanthanoids" -> button.setBackground(Color.MAGENTA);
+            case "Actinoids" -> button.setBackground(Color.PINK);
         }
     }
 
