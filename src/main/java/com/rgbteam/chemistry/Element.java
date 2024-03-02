@@ -9,20 +9,20 @@ public class Element {
     private final String fullName;
     private final String shortName;
     private final int atomicNumber;
-    private final boolean isMetal;
+    private final String groupElement;
     private final double atomicMass;
     private final double molarMass;
     private final int protonAmount;
     private final int neutronAmount;
     private final int electronAmount;
 
-    public Element(String shortName, String fullName, int number, boolean isMetal, double atomicMass) {
+    public Element(String shortName, String fullName, int number, String groupElement, double atomicMass) {
         this.fullName = fullName;
         this.shortName = shortName;
         this.atomicNumber = number;
         this.protonAmount = number;
         this.electronAmount = number;
-        this.isMetal = isMetal;
+        this.groupElement = groupElement;
         this.atomicMass = atomicMass;
         this.molarMass = atomicMass / 10;
         this.neutronAmount = (int) atomicMass - number;
@@ -40,8 +40,8 @@ public class Element {
         return atomicNumber;
     }
 
-    public boolean isMetal() {
-        return isMetal;
+    public String getGroupElement() {
+        return groupElement;
     }
 
     public double getAtomicMass() {
@@ -72,7 +72,7 @@ public class Element {
     public String toString() {
         return "Element is " + fullName + " (" + shortName + ")\n" +
                 "Atomic Number: " + atomicNumber + "\n" +
-                "Is Metal: " + (isMetal ? "Yes" : "No") + "\n" +
+                "Element group: " + groupElement + "\n" +
                 "Atomic Mass: " + String.format("%.5f", atomicMass) + " amu\n" +
                 "Molar Mass: " + String.format("%.5f", molarMass) + " g/mol\n" +
                 "Protons: " + protonAmount + "\n" +
@@ -87,7 +87,7 @@ public class Element {
         result = prime * result + ((fullName == null) ? 0 : fullName.hashCode());
         result = prime * result + ((shortName == null) ? 0 : shortName.hashCode());
         result = prime * result + atomicNumber;
-        result = prime * result + (isMetal ? 1231 : 1237);
+        result = prime * result + ((groupElement == null) ? 0 : groupElement.hashCode());
         long temp;
         temp = Double.doubleToLongBits(atomicMass);
         result = prime * result + (int) (temp ^ (temp >>> 32));
@@ -118,8 +118,11 @@ public class Element {
             return false;
         if (atomicNumber != other.atomicNumber)
             return false;
-        if (isMetal != other.isMetal)
+        if (groupElement != null && other.groupElement != null) {
             return false;
+        } else if (!groupElement.equals(other.groupElement)) {
+            return false;
+        }
         if (Double.doubleToLongBits(atomicMass) != Double.doubleToLongBits(other.atomicMass))
             return false;
         if (Double.doubleToLongBits(molarMass) != Double.doubleToLongBits(other.molarMass))

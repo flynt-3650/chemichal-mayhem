@@ -13,6 +13,7 @@ import javax.swing.Box;
 
 import java.awt.GridLayout;
 import java.awt.Dimension;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -51,6 +52,7 @@ public class GUIView {
             Element e = controller.retrieveElementByNumber(i + 1);
             if (e != null) {
                 buttons[i] = new JButton(e.getShortName());
+                setColour(buttons[i], i);
                 buttons[i].addActionListener(elementButtonListener);
             }
         }
@@ -99,4 +101,30 @@ public class GUIView {
         }
         return panel;
     }
+
+    private void setColour(JButton button, int i) {
+        String group = controller.retrieveElementGroup(i + 1);
+        if (group.equals("Nonmetals")) {
+            button.setBackground(Color.GREEN);
+        } else if (group.equals("Noble gases")) {
+            button.setBackground(Color.CYAN);
+        } else if (group.equals("Alkali metals")) {
+            button.setBackground(Color.RED);
+        } else if (group.equals("Alkaline earth metals")) {
+            button.setBackground(Color.ORANGE);
+        } else if (group.equals("Metalloids")) {
+            button.setBackground(Color.GRAY);
+        } else if (group.equals("Halogen")) {
+            button.setBackground(Color.YELLOW);
+        } else if (group.equals("Post-transition metals")) {
+            button.setBackground(Color.BLUE);
+        } else if (group.equals("Transition metals")) {
+            button.setBackground(Color.WHITE);
+        } else if (group.equals("Lanthanoids")) {
+            button.setBackground(Color.MAGENTA);
+        } else if (group.equals("Actinoids")) {
+            button.setBackground(Color.PINK);
+        }
+    }
+
 }
